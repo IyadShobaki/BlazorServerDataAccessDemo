@@ -49,6 +49,12 @@ namespace SupportLibrary.Data
                 }
             });
         }
+
+        public Task<List<IPersonModel>> SearchPeople(string searchTerm)
+        {
+            return Task.FromResult(people.Where(x => x.FirstName.Contains(searchTerm) ||
+                        x.LastName.Contains(searchTerm)).ToList());
+        }
     }
 }
 

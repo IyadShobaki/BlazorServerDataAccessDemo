@@ -31,8 +31,8 @@ namespace BlazorApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            //services.AddScoped<IPersonDataService, PersonSqlDataService>();
-            services.AddScoped<IPersonDataService, PersonDummyDataService>();
+            services.AddScoped<IPersonDataService, PersonSqlDataService>();
+            //services.AddScoped<IPersonDataService, PersonDummyDataService>();
             services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
         }
 
