@@ -2,6 +2,7 @@
 using SupportLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,14 @@ namespace SupportLibrary.Data
                 person.DateOfBirth
             };
             await _dataAccess.SaveData("dbo.spPeople_Create", p, "SQLDB");
+        }
+
+        public async Task<List<IPersonModel>> ReadPeople()
+        {
+            var people = await _dataAccess.LoadData<PersonModel, dynamic>("dbo.spPeople_Read",
+                new { }, "SQLDB");
+
+            return people.ToList<IPersonModel>();
         }
     }
 }
